@@ -1,4 +1,4 @@
-# Keep App
+# Keep One
 
 A modern React application with a beautiful sign-in interface.
 
@@ -28,7 +28,7 @@ The application will open in your default browser at `http://localhost:3000`.
 ## Project Structure
 
 ```
-keep-app/
+keep-one/
 ├── src/
 │   ├── components/
 │   │   └── SignIn.tsx
