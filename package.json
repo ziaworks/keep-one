@@ -1,5 +1,5 @@
 {
-  "name": "keep-app",
+  "name": "keep-one",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,6 +9,7 @@
     "@types/styled-components": "^5.1.26",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-scripts": "5.1.0",
     "styled-components": "^5.3.10",
     "typescript": "^4.9.5"
   },
