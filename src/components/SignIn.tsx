@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { supabase } from '../supabaseClient';
 import './SignIn.css';
 
 interface SignInProps {
@@ -7,13 +8,32 @@ interface SignInProps {
 
 const SignIn: React.FC<SignInProps> = ({ onSubmit }) => {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (onSubmit) {
-      onSubmit(email);
+    setLoading(true);
+    setMessage('');
+
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) {
+        setMessage(error.message);
+      } else if (onSubmit) {
+        onSubmit(email);
+      }
+    } catch (error) {
+      setMessage('An unexpected error occurred');
+      console.error('Sign in error:', error);
+    } finally {
+      setLoading(false);
     }
-    console.log('Email submitted:', email);
   };
 
   return (
@@ -37,8 +57,10 @@ const SignIn: React.FC<SignInProps> = ({ onSubmit }) => {
       {/* Content */}
       <div className="content">
         <div className="copy">
-          <p>Enter your email to sign up for this app</p>
+          <p>Sign in to your account</p>
         </div>
+        
+        {message && <div className="error-message">{message}</div>}
         
         <form className="input-button" onSubmit={handleSubmit}>
           <div className="field">
@@ -50,13 +72,29 @@ const SignIn: React.FC<SignInProps> = ({ onSubmit }) => {
               required
             />
           </div>
-          <button className="continue-button" type="submit">
-            Continue
+          
+          <div className="field">
+            <input 
+              type="password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+              minLength={6}
+            />
+          </div>
+          
+          <button 
+            className="continue-button" 
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
         
         <p className="terms">
-          By clicking continue, you agree to our Terms of Service and Privacy Policy
+          Don't have an account? <a href="/">Create one</a>
         </p>
       </div>
 

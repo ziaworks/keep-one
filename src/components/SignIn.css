@@ -198,4 +198,32 @@
   height: 5px;
   background-color: #000000;
   border-radius: 100px;
+}
+
+/* Add error message styles */
+.error-message {
+  background-color: #fde8e8;
+  color: #d32f2f;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Update the continue button for disabled state */
+.continue-button:disabled {
+  background-color: #9ecef9;
+  cursor: not-allowed;
+}
+
+/* Style the link in the terms text */
+.terms a {
+  color: #2196f3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms a:hover {
+  text-decoration: underline;
 } 
