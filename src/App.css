@@ -1,42 +1,39 @@
 .App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f5f5f5;
   text-align: center;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0;
-}
-
-.app-nav {
+  min-height: 100vh;
   display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  background-color: #f0f0f0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  left: 0;
-  z-index: 100;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
 }
 
-.app-nav a {
-  text-decoration: none;
+.App-header {
+  max-width: 80%;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
   color: #333;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 20px;
-  transition: background-color 0.3s;
 }
 
-.app-nav a:hover {
-  background-color: #e0e0e0;
+p {
+  color: #666;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
 }
 
-/* Sign out button */
+.small-text {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Keep the sign-out button styling */
 .sign-out {
   background: none;
   border: none;

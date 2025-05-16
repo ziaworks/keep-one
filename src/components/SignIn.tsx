@@ -28,7 +28,7 @@ const SignIn: React.FC<SignInProps> = ({ onSubmit }) => {
       } else if (onSubmit) {
         onSubmit(email);
       }
-    } catch (error) {
+    } catch (error: any) {
       setMessage('An unexpected error occurred');
       console.error('Sign in error:', error);
     } finally {
@@ -67,7 +67,7 @@ const SignIn: React.FC<SignInProps> = ({ onSubmit }) => {
             <input 
               type="email" 
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
               placeholder="Email"
               required
             />
@@ -77,7 +77,7 @@ const SignIn: React.FC<SignInProps> = ({ onSubmit }) => {
             <input 
               type="password" 
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
               placeholder="Password"
               required
               minLength={6}

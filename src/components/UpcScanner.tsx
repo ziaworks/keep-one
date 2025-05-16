@@ -65,7 +65,7 @@ const UpcScanner: React.FC = () => {
           setScanMessage('');
         }, 3000);
       }
-    } catch (error) {
+    } catch (error: any) {
       setScanStatus('error');
       setScanMessage('Unexpected error occurred');
       console.error('Unexpected error:', error);

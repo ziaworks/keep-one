@@ -47,7 +47,7 @@ const Home: React.FC = () => {
           navigate('/scanner'); // Redirect to scanner page after login
         }
       }
-    } catch (error) {
+    } catch (error: any) {
       setMessageType('error');
       setMessage('An unexpected error occurred');
       console.error('Auth error:', error);
@@ -100,7 +100,7 @@ const Home: React.FC = () => {
               type="email" 
               id="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -111,7 +111,7 @@ const Home: React.FC = () => {
               type="password" 
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
               required
               minLength={6}
             />
