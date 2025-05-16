@@ -1,4 +1,5 @@
 import { supabase } from '../supabaseClient';
+import { AuthChangeEvent, Session } from '@supabase/supabase-js';
 
 export interface User {
   id: string;
@@ -28,15 +29,15 @@ export const signOut = async (): Promise<void> => {
   }
 };
 
-type AuthChangeEvent = 'SIGNED_IN' | 'SIGNED_OUT' | 'USER_UPDATED' | 'PASSWORD_RECOVERY';
-
 export const setupAuthListener = (callback: (user: User | null) => void): (() => void) => {
-  const { data: { subscription } } = supabase.auth.onAuthStateChange((event: AuthChangeEvent, session: any) => {
+  const { data: { subscription } } = supabase.auth.onAuthStateChange((event: AuthChangeEvent, session: Session | null) => {
     if (event === 'SIGNED_IN' || event === 'USER_UPDATED') {
-      callback({
-        id: session?.user.id || '',
-        email: session?.user.email,
-      });
+      if (session?.user) {
+        callback({
+          id: session.user.id || '',
+          email: session.user.email,
+        });
+      }
     } else if (event === 'SIGNED_OUT') {
       callback(null);
     }
