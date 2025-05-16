@@ -12,5 +12,9 @@
   "routes": [
     { "handle": "filesystem" },
     { "src": "/[^.]+", "dest": "/index.html" }
-  ]
+  ],
+  "env": {
+    "REACT_APP_SUPABASE_URL": "https://ogwbagrukjgchivuutyc.supabase.co",
+    "REACT_APP_SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9nd2JhZ3J1a2pnY2hpdnV1dHljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDczNDEyNjUsImV4cCI6MjA2MjkxNzI2NX0.mTT8efgIWWto2i-EAGpc0Jf5KvURnE5w3sjtDhV-URw"
+  }
 } 
