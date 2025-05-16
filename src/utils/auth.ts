@@ -28,8 +28,10 @@ export const signOut = async (): Promise<void> => {
   }
 };
 
+type AuthChangeEvent = 'SIGNED_IN' | 'SIGNED_OUT' | 'USER_UPDATED' | 'PASSWORD_RECOVERY';
+
 export const setupAuthListener = (callback: (user: User | null) => void): (() => void) => {
-  const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+  const { data: { subscription } } = supabase.auth.onAuthStateChange((event: AuthChangeEvent, session: any) => {
     if (event === 'SIGNED_IN' || event === 'USER_UPDATED') {
       callback({
         id: session?.user.id || '',

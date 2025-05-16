@@ -27,7 +27,7 @@ const UpcScanner: React.FC = () => {
       setResult(upcCode);
       saveToSupabase(upcCode);
     },
-    onError(error) {
+    onError(error: Error) {
       console.error('Scanner error:', error);
     },
   });
